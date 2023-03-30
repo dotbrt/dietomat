@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.span-input {
+    width: 12em;
+}
+
+.field-input {
+    width: 100%;
+    max-width: 20rem;
+}
+
