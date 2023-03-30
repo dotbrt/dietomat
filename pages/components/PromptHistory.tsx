@@ -17,7 +17,7 @@ export default function PromptHistory({ props }) {
                 <tbody className='[border-spacing:1rem]'>
                     {/* row */}
                     {props.map((prompt, index) => (
-                        <tr className='items-center h-2'>
+                        <tr className='items-center h-2' key={index}>
                             <th>{index}</th>
                             <td>{new Date(prompt.created_at).toLocaleString()}</td>
                             <td>{prompt.user_prompt}</td>

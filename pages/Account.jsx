@@ -7,23 +7,7 @@ import PromptHistory from "./components/PromptHistory";
 export default function Account() {
     const router = useRouter()
     const session = useSession();
-    useEffect(() => {
-        getProfile();
-        fetchHistory();
-    }, [session]);
-    // useEffect(() => {
-    //     if (!session || !user) {
-    //         router.push('/')
-    //     }
-    // }, [session])
-    const supabase = useSupabaseClient();
-    const user = useUser();
     const [loading, setLoading] = useState(true);
-    const [username, setUsername] = useState(null);
-    const [website, setWebsite] = useState(null);
-    const [avatar_url, setAvatarUrl] = useState(null);
-    const [entries, setEntries] = useState([]);
-
     async function getProfile() {
 
         try {
@@ -73,6 +57,23 @@ export default function Account() {
         fetchHistory();
         console.log(entries)
     }
+    useEffect(() => {
+        getProfile();
+        fetchHistory();
+    }, [session]);
+    // useEffect(() => {
+    //     if (!session || !user) {
+    //         router.push('/')
+    //     }
+    // }, [session])
+    const supabase = useSupabaseClient();
+    const user = useUser();
+    const [username, setUsername] = useState(null);
+    const [website, setWebsite] = useState(null);
+    const [avatar_url, setAvatarUrl] = useState(null);
+    const [entries, setEntries] = useState([]);
+
+
 
     async function updateProfile({ username, website, avatar_url }) {
         try {
