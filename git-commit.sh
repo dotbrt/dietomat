@@ -8,6 +8,6 @@ git add .
 git commit -m "$datetime"
 
 #push the changes to the master branch
-git push origin supabase
+git push origin master
 
-echo "Changes committed and pushed to supabase branch at $datetime."
+echo "Changes committed and pushed to master branch at $datetime."
