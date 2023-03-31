@@ -8,23 +8,22 @@ export default function Avatar({ uid, url, size, onUpload }) {
     const [uploading, setUploading] = useState(false);
 
     useEffect(() => {
+        async function downloadImage(path) {
+            try {
+                const { data, error } = await supabase.storage
+                    .from("avatars")
+                    .download(path);
+                if (error) {
+                    throw error;
+                }
+                const url = URL.createObjectURL(data);
+                setAvatarUrl(url);
+            } catch (error) {
+                console.log("Error downloading image: ", error);
+            }
+        }
         if (url) downloadImage(url);
     }, [url]);
-
-    async function downloadImage(path) {
-        try {
-            const { data, error } = await supabase.storage
-                .from("avatars")
-                .download(path);
-            if (error) {
-                throw error;
-            }
-            const url = URL.createObjectURL(data);
-            setAvatarUrl(url);
-        } catch (error) {
-            console.log("Error downloading image: ", error);
-        }
-    }
 
     const uploadAvatar = async (event) => {
         try {
