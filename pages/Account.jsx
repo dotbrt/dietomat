@@ -9,6 +9,11 @@ export default function Account() {
     const session = useSession();
     const [loading, setLoading] = useState(true);
     const [entries, setEntries] = useState([]);
+    const supabase = useSupabaseClient();
+    const user = useUser();
+    const [username, setUsername] = useState(null);
+    const [website, setWebsite] = useState(null);
+    const [avatar_url, setAvatarUrl] = useState(null);
     // async function getProfile() {
 
     //     try {
@@ -105,11 +110,7 @@ export default function Account() {
             fetchHistory();
         }
     }, [session]);
-    const supabase = useSupabaseClient();
-    const user = useUser();
-    const [username, setUsername] = useState(null);
-    const [website, setWebsite] = useState(null);
-    const [avatar_url, setAvatarUrl] = useState(null);
+
 
 
 
