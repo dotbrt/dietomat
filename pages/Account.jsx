@@ -8,59 +8,99 @@ export default function Account() {
     const router = useRouter()
     const session = useSession();
     const [loading, setLoading] = useState(true);
-    async function getProfile() {
+    const [entries, setEntries] = useState([]);
+    // async function getProfile() {
 
-        try {
-            setLoading(true);
+    //     try {
+    //         setLoading(true);
 
-            let { data, error, status } = await supabase
-                .from("profiles")
-                .select(`username, website, avatar_url`)
-                .eq("id", user.id)
-                .single();
+    //         let { data, error, status } = await supabase
+    //             .from("profiles")
+    //             .select(`username, website, avatar_url`)
+    //             .eq("id", user.id)
+    //             .single();
 
-            if (error && status !== 406) {
-                throw error;
-            }
+    //         if (error && status !== 406) {
+    //             throw error;
+    //         }
 
-            if (data) {
-                setUsername(data.username);
-                setWebsite(data.website);
-                setAvatarUrl(data.avatar_url);
-            }
-        } catch (error) {
-            alert("Error loading user data!");
-            console.log(error);
-        } finally {
-            setLoading(false);
-        }
-    }
+    //         if (data) {
+    //             setUsername(data.username);
+    //             setWebsite(data.website);
+    //             setAvatarUrl(data.avatar_url);
+    //         }
+    //     } catch (error) {
+    //         alert("Error loading user data!");
+    //         console.log(error);
+    //     } finally {
+    //         setLoading(false);
+    //     }
+    // }
 
-    async function fetchHistory() {
-        try {
-            setLoading(true);
-            let { data, error } = await supabase
-                .from("prompts")
-                .select(`id, user_prompt, gpt_answer, created_at`)
-                .eq("user_id", user.id)
-                .order("created_at", { ascending: false });
-            if (error) throw error;
-            setEntries(data);
-        } catch (error) {
-            alert("Error loading user data!");
-            console.log(error);
-        } finally {
-            setLoading(false);
-        }
-    }
-    function handleHistory() {
-        fetchHistory();
-        console.log(entries)
-    }
+    // async function fetchHistory() {
+    //     try {
+    //         setLoading(true);
+    //         let { data, error } = await supabase
+    //             .from("prompts")
+    //             .select(`id, user_prompt, gpt_answer, created_at`)
+    //             .eq("user_id", user.id)
+    //             .order("created_at", { ascending: false });
+    //         if (error) throw error;
+    //         setEntries(data);
+    //     } catch (error) {
+    //         alert("Error loading user data!");
+    //         console.log(error);
+    //     } finally {
+    //         setLoading(false);
+    //     }
+    // }
     useEffect(() => {
         if (!session) {
             router.push('/')
         } else {
+            async function fetchHistory() {
+                try {
+                    let { data, error } = await supabase
+                        .from("prompts")
+                        .select(`id, user_prompt, gpt_answer, created_at`)
+                        .eq("user_id", user.id)
+                        .order("created_at", { ascending: false });
+                    if (error) throw error;
+                    setEntries(data);
+                } catch (error) {
+                    alert("Error loading user data!");
+                    console.log(error);
+                } finally {
+                    setLoading(false);
+                }
+            }
+            async function getProfile() {
+
+                try {
+                    setLoading(true);
+
+                    let { data, error, status } = await supabase
+                        .from("profiles")
+                        .select(`username, website, avatar_url`)
+                        .eq("id", user.id)
+                        .single();
+
+                    if (error && status !== 406) {
+                        throw error;
+                    }
+
+                    if (data) {
+                        setUsername(data.username);
+                        setWebsite(data.website);
+                        setAvatarUrl(data.avatar_url);
+                    }
+                } catch (error) {
+                    alert("Error loading user data!");
+                    console.log(error);
+                } finally {
+                    setLoading(false);
+                }
+            }
             getProfile();
             fetchHistory();
         }
@@ -70,7 +110,6 @@ export default function Account() {
     const [username, setUsername] = useState(null);
     const [website, setWebsite] = useState(null);
     const [avatar_url, setAvatarUrl] = useState(null);
-    const [entries, setEntries] = useState([]);
 
 
 
