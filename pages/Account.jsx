@@ -5,12 +5,11 @@ import { useRouter } from "next/router";
 import PromptHistory from "./components/PromptHistory";
 
 export default function Account() {
-    const router = useRouter()
+
     const session = useSession();
     const [loading, setLoading] = useState(true);
     const [entries, setEntries] = useState([]);
-    const supabase = useSupabaseClient();
-    const user = useUser();
+
     const [username, setUsername] = useState(null);
     const [website, setWebsite] = useState(null);
     const [avatar_url, setAvatarUrl] = useState(null);
@@ -60,6 +59,9 @@ export default function Account() {
     //     }
     // }
     useEffect(() => {
+        const supabase = useSupabaseClient();
+        const user = useUser();
+        const router = useRouter()
         if (!session) {
             router.push('/')
         } else {
