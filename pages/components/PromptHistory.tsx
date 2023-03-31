@@ -7,18 +7,18 @@ export default function PromptHistory({ props }) {
             <table className="table-zebra table-auto">
                 {/* head*/}
                 <thead>
-                    <tr>
-                        <th className=' w-1/12'>ID</th>
-                        <th className=' w-2/12'>Created_at</th>
-                        <th className=' w-7/12'>User Prompt</th>
-                        <th className=' w-2/12'>GPT Answer</th>
+                    <tr className=''>
+                        <th className='w-1/12'>ID</th>
+                        <th className='w-2/12'>Created_at</th>
+                        <th className='w-7/12'>User Prompt</th>
+                        <th className='w-2/12'>GPT Answer</th>
                     </tr>
                 </thead>
-                <tbody className='[border-spacing:1rem]'>
+                <tbody>
                     {/* row */}
                     {props.map((prompt, index) => (
-                        <tr className='items-center h-2' key={index}>
-                            <th>{index}</th>
+                        <tr key={index} className='h-20'>
+                            <th> {index}</th>
                             <td>{new Date(prompt.created_at).toLocaleString()}</td>
                             <td>{prompt.user_prompt}</td>
                             <td>{/* The button to open modal */}
@@ -41,7 +41,7 @@ export default function PromptHistory({ props }) {
                     }
                     {/* end row */}
                 </tbody>
-            </table>
-        </div>
+            </table >
+        </div >
     )
 }

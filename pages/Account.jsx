@@ -58,14 +58,13 @@ export default function Account() {
         console.log(entries)
     }
     useEffect(() => {
-        getProfile();
-        fetchHistory();
+        if (!session) {
+            router.push('/')
+        } else {
+            getProfile();
+            fetchHistory();
+        }
     }, [session]);
-    // useEffect(() => {
-    //     if (!session || !user) {
-    //         router.push('/')
-    //     }
-    // }, [session])
     const supabase = useSupabaseClient();
     const user = useUser();
     const [username, setUsername] = useState(null);
@@ -99,8 +98,8 @@ export default function Account() {
     }
 
     return (
-        <div className="flex flex-row">
-            <div className="card w-3/12 bg-base-100 shadow-xl items-center">
+        <div className="flex flex-col sm:flex-row">
+            <div className="card sm:w-9/12 md:w-3/12 bg-base-100 shadow-xl items-center">
                 <div>
                     <div className="avatar m-10">
                         <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
@@ -173,7 +172,7 @@ export default function Account() {
                     </div>
                 </div>
             </div>
-            <div className="card w-9/12 bg-base-100 shadow-xl items-center">
+            <div className="card sm:w-9/12 md:w-9/12  bg-base-100 shadow-xl items-center">
                 {/* <button onClick={handleHistory}>HIT</button> */}
                 <PromptHistory props={entries} />
             </div>
