@@ -45,6 +45,7 @@ export default function Navbar() {
                                     <Link
                                         href="/Account"
                                         className="justify-between"
+                                        query={1}
                                     >
                                         Profile
                                     </Link>
@@ -53,6 +54,7 @@ export default function Navbar() {
                                     <Link
                                         href="/PromptHistory"
                                         className="justify-between"
+                                        query={2}
                                     >
                                         Zapisane Diety
                                     </Link>
