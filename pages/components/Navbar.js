@@ -47,7 +47,14 @@ export default function Navbar() {
                                         className="justify-between"
                                     >
                                         Profile
-                                        <span className="badge">New</span>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link
+                                        href="/PromptHistory"
+                                        className="justify-between"
+                                    >
+                                        Zapisane Diety
                                     </Link>
                                 </li>
                                 {/* <li>

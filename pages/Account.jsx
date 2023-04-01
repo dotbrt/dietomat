@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useSession, useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
+import { useSession, useUser } from "@supabase/auth-helpers-react";
 import { supabaseClient } from "../utils/SupabaseClient";
 import PromptHistory from "./components/PromptHistory";
 import ProfilePanel from "./components/ProfilePanel";
