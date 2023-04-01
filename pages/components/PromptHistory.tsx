@@ -1,7 +1,15 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
-export default function PromptHistory({ props }) {
-    console.log('from component: ', props)
+
+interface PromptHistoryProps {
+    props: {
+        id: number,
+        created_at: string,
+        user_prompt: string,
+        gpt_answer: string
+    }[]
+}
+export default function PromptHistory({ props }: PromptHistoryProps) {
     return (
         <div className="overflow-x-auto">
             <table className="table-zebra table-auto">
@@ -22,16 +30,16 @@ export default function PromptHistory({ props }) {
                             <td>{new Date(prompt.created_at).toLocaleString()}</td>
                             <td>{prompt.user_prompt}</td>
                             <td>{/* The button to open modal */}
-                                <label htmlFor={index} className="btn">open diet</label>
+                                <label htmlFor={index.toString()} className="btn">open diet</label>
 
                                 {/* Put this part before </body> tag */}
-                                <input type="checkbox" id={index} className="modal-toggle" hidden />
+                                <input type="checkbox" id={index.toString()} className="modal-toggle" hidden />
                                 <div className="modal">
                                     <div className="modal-box max-w-5xl flex flex-col gap-3 p-8">
                                         <h3 className="font-bold text-2xl">Twoja dieta:</h3>
                                         <ReactMarkdown className="prose prose-slate">{prompt.gpt_answer}</ReactMarkdown>
                                         <div className="modal-action">
-                                            <label htmlFor={index} className="btn">Thanks!</label>
+                                            <label htmlFor={index.toString()} className="btn">Thanks!</label>
                                         </div>
                                     </div>
                                 </div>

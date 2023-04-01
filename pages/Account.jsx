@@ -13,6 +13,10 @@ export default function Account() {
     const [userData, setUserData] = useState(null);
     const [avatar_url, setAvatarUrl] = useState(null);
 
+    const historyCallback = {
+
+    }
+
     const getHistory = useCallback(async () => {
         try {
             setLoading(true);
@@ -90,7 +94,7 @@ export default function Account() {
             <ProfilePanel session={session} username={username} setUsername={setUsername} updateProfile={updateProfile} loading={loading} />
             <div className="card sm:w-9/12 md:w-9/12  bg-base-100 shadow-xl items-center">
                 {/* <button onClick={handleHistory}>HIT</button> */}
-                <PromptHistory props={entries} />
+                <PromptHistory props={entries} loading={loading} />
             </div>
         </div>
     );
