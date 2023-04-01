@@ -9,7 +9,18 @@ interface PromptHistoryProps {
         gpt_answer: string
     }[]
 }
-export default function PromptHistory({ props }: PromptHistoryProps = { props: [] }) {
+
+const def = {
+    props: [
+        {
+            id: 1,
+            created_at: '2021-08-01T12:00:00.000Z',
+            user_prompt: '## User Prompt',
+            gpt_answer: '## GPT Answer'
+        },
+    ]
+}
+export default function PromptHistory({ props }: PromptHistoryProps = { props: def.props }) {
     return (
         <div className="overflow-x-auto">
             <table className="table-zebra table-auto">
