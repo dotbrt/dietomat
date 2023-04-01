@@ -61,7 +61,7 @@ export default function Account() {
             getHistory();
             getProfile();
         }
-    }, [user]);
+    }, [user, getHistory, getProfile]);
     async function updateProfile({ username, avatar_url }) {
         try {
             setLoading(true);
