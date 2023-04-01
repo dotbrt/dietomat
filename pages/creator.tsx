@@ -5,7 +5,7 @@ import { useUser, useSession } from '@supabase/auth-helpers-react'
 import UserInput from './components/user_input';
 import LoginPage from './components/loginPage';
 import { useRouter } from 'next/router'
-import { supabaseClient } from './api/SupabaseClient'
+import { supabaseClient } from '../utils/SupabaseClient'
 
 const Home: NextPage = () => {
     interface FormData {

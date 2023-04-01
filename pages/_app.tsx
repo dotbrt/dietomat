@@ -10,16 +10,16 @@ import Layout from './components/Layout'
 function App({ Component, pageProps }: AppProps) {
     const [supabase] = useState(() => createBrowserSupabaseClient())
     return (
-        <DataContextProvider>
-            <SessionContextProvider
-                supabaseClient={supabase}
-                initialSession={pageProps.initialSession}
-            >
-                <Layout>
-                    <Component {...pageProps} />
-                </Layout>
-            </SessionContextProvider >
-        </DataContextProvider>
+        // <DataContextProvider>
+        <SessionContextProvider
+            supabaseClient={supabase}
+            initialSession={pageProps.initialSession}
+        >
+            <Layout>
+                <Component {...pageProps} />
+            </Layout>
+        </SessionContextProvider >
+        // </DataContextProvider>
     );
 }
 
