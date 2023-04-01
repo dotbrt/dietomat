@@ -2,14 +2,14 @@ import React from 'react'
 import ReactMarkdown from 'react-markdown'
 
 interface PromptHistoryProps {
-    props: {
+    props?: {
         id: number,
         created_at: string,
         user_prompt: string,
         gpt_answer: string
     }[]
 }
-export default function PromptHistory({ props }: PromptHistoryProps) {
+export default function PromptHistory({ props }: PromptHistoryProps = { props: [] }) {
     return (
         <div className="overflow-x-auto">
             <table className="table-zebra table-auto">
