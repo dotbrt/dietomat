@@ -23,7 +23,7 @@ export default function Avatar({ uid, url, size, onUpload }) {
             }
         }
         if (url) downloadImage(url);
-    }, [url]);
+    }, [url, supabase.storage]);
 
     const uploadAvatar = async (event) => {
         try {

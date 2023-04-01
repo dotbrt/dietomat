@@ -12,8 +12,8 @@ export default function Account() {
     const [username, setUsername] = useState(null);
     const [userData, setUserData] = useState(null);
     const [avatar_url, setAvatarUrl] = useState(null);
-    async function getProfile() {
 
+    const getHistory = useCallback(async () => {
         try {
             setLoading(true);
 
@@ -37,9 +37,9 @@ export default function Account() {
         } finally {
             setLoading(false);
         }
-    }
+    }, [user]);
 
-    async function getHistory() {
+    const getProfile = useCallback(async () => {
         try {
             setLoading(true);
             let { data, error } = await supabaseClient
@@ -55,7 +55,8 @@ export default function Account() {
         } finally {
             setLoading(false);
         }
-    }
+    }, [user]);
+
     useEffect(() => {
         if (user) {
             getHistory();
