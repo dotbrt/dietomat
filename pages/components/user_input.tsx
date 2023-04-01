@@ -1,17 +1,3 @@
-import { useContext, useState } from 'react';
-import { DataContext } from '../context/data-context';
-
-// interface UserInputProps {
-//     onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
-//     handleChange: (data: {
-//         gender?: string;
-//         weight?: number;
-//         age?: number;
-//         height?: number;
-//         goal?: string;
-//         activity?: string;
-//     }) => void;
-// }
 export default function UserInput({ handleChange, onSubmit, isLoading }) {
 
 
@@ -86,12 +72,6 @@ export default function UserInput({ handleChange, onSubmit, isLoading }) {
                 </label>
                 <button type="submit" className="btn btn-primary w-48" disabled={isLoading}>Submit</button>
             </form>
-            {/* <div className="mt-4">
-                <label className="flex items-center space-x-2">
-                    <input type="checkbox" checked={useDummyData} onChange={handleToggleDummyData} className="form-checkbox h-5 w-5 text-blue-600" />
-                    <span className="text-gray-700 text-lg font-medium">Use dummy data</span>
-                </label>
-            </div> */}
         </>
     );
 };
