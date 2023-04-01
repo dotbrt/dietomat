@@ -10,7 +10,7 @@ export const DataContext = createContext<DataContextType>({
     setData: () => { },
 });
 
-export const DataContextProvider: React.FC<any> = ({ children }) => {
+export const DataContextProvider: React.FC<any> = ({ children }: any) => {
     const [contextData, setData] = useState("");
 
     const value = {
